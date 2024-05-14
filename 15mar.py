@@ -7,11 +7,57 @@ import module1
 import importlib
 
 
+#---------------------#
+#EXCEPTIONAL HANDLING / ERROR HANDLING
+
+
+
+#-------------------------
+# # Exceptional Hndling Example 2
+# # Hndling KeyError (Implementing Users Login System)
+# users = {"rahul":"rah@123", "ramu":"ram@123", "shiva":"shi@123"}
+# try:
+#     user_name = input("Please Enter user's Name: ")
+#     pwd = input("Please Enter User's Password: ")
+#     if users[user_name]== pwd:
+#         print(f"Welcome to Dashboard {user_name} !")
+#     else:
+#         print("Invalid Password")
+
+# except KeyError:
+#     print("Invalid User, This user is not in our database ! Give another name. ")
+
+#--------------------------
+
+# # Exceptional Handling Example 1
+# # Handling ValueError
+# try:
+#     n1 = int(input("Enter value of Number 1: "))
+#     n2 = int(input("Enter value of Number 2: "))
+#     s = n1 + n2
+#     print(f" sume of n1 and n2 is {s}")
+# except ValueError:
+#     print(f"Please Enter Interger Value, Try Again..")
+
 
 
 #--------------------#
-# Nested Class 
+# # Nested Class  
+#(Class defined inside anothe class is called nested class)
+# #Example of Local Class (Class Defined inside method, its object can be created inside that method only)
+# #No other class can acces this class hwich is defined inside a method. 
+# class Student:
+#     def reads(self, std_name):
+#         class Book:
+#             def bookType(self):
+#                 print(f"{std_name} Reads Horror Bokks")
+#         book_obj = Book()
+#         book_obj.bookType()
 
+# std1 = Student()
+# std1.reads("Rahul")
+
+#----------------------#
 
 # # #Neste Class Example 2
 # class Student:
@@ -35,6 +81,7 @@ import importlib
 # std1 = Student("Rahul", "python", 2000) #Passing the value to Students's Constructor
 # std1.printStudent()
 
+#-----------------------#
 
 # # Nested Class Example 1
 # class Person:
@@ -89,7 +136,7 @@ import importlib
 # c1.m3()
 # print(C.__mro__)
 
-
+#--------------------#
 #Abstract methods
 # #exmaple of abstraction 2
 # from abc import ABC, abstractmethod
@@ -116,9 +163,8 @@ import importlib
 # atm = ATM()
 # atm.width(sbi)
 # atm.width(hdfc)
-        
 
-
+#-----------------------#
 
 
 #exmaple of abstraction 1
