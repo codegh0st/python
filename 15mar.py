@@ -13,27 +13,27 @@ import importlib
 # Nested Class 
 
 
-# #Neste Class Example 2
-class Student:
-    class __Course:
-        def __init__(self, cn=None, f=None ):
-            self.__course_name = cn
-            self.__fee = f
+# # #Neste Class Example 2
+# class Student:
+#     class __Course:
+#         def __init__(self, cn=None, f=None ):
+#             self.__course_name = cn
+#             self.__fee = f
         
-        def printCourse(self):
-            print(f"Course:{self.__course_name} Fee:{self.__fee}")
+#         def printCourse(self):
+#             print(f"Course:{self.__course_name} Fee:{self.__fee}")
 
-    #i want whenever Student object is created it created with name, course name, and fee. Thats why initilzing
-    def __init__(self, sn, cn, f): #studentname, coursename, fee
-        self.__student_name = sn
-        self.__course1 = Student.__Course(cn, f) # Creating __Course object, inside Student object. 
+#     #i want whenever Student object is created it created with name, course name, and fee. Thats why initilzing
+#     def __init__(self, sn, cn, f): #studentname, coursename, fee
+#         self.__student_name = sn
+#         self.__course1 = Student.__Course(cn, f) # Creating __Course object, inside Student object. 
     
-    def printStudent(self):
-        print(f"Student Name: {self.__student_name}")
-        self.__course1.printCourse() # Calling the method of __Course object
+#     def printStudent(self):
+#         print(f"Student Name: {self.__student_name}")
+#         self.__course1.printCourse() # Calling the method of __Course object
     
-std1 = Student("Rahul", "python", 2000) #Passing the value to Students's Constructor
-std1.printStudent()
+# std1 = Student("Rahul", "python", 2000) #Passing the value to Students's Constructor
+# std1.printStudent()
 
 
 # # Nested Class Example 1
