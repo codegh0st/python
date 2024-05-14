@@ -9,44 +9,70 @@ import importlib
 
 
 
-
+#--------------------#
 # Nested Class 
-# Nested Class Example 1
-class Person:
-    class __Adress:
-        def __init__(self):
-            self.__street = None
-            self.__city = None
-        def readAddress(self):
-            self.__street = input("Enter Street Name: ")
-            self.__city = input("Enter City Name: ")
+
+
+# #Neste Class Example 2
+class Student:
+    class __Course:
+        def __init__(self, cn=None, f=None ):
+            self.__course_name = cn
+            self.__fee = f
         
-        def printAdress(self):
-            return f"Street: {self.__street} City: {self.__city}"
-           # print(f"Street: {self.__street} City: {self.__city}")
+        def printCourse(self):
+            print(f"Course:{self.__course_name} Fee:{self.__fee}")
+
+    #i want whenever Student object is created it created with name, course name, and fee. Thats why initilzing
+    def __init__(self, sn, cn, f): #studentname, coursename, fee
+        self.__student_name = sn
+        self.__course1 = Student.__Course(cn, f) # Creating __Course object, inside Student object. 
+    
+    def printStudent(self):
+        print(f"Student Name: {self.__student_name}")
+        self.__course1.printCourse() # Calling the method of __Course object
+    
+std1 = Student("Rahul", "python", 2000) #Passing the value to Students's Constructor
+std1.printStudent()
+
+
+# # Nested Class Example 1
+# class Person:
+#     class __Adress:
+#         def __init__(self):
+#             self.__street = None
+#             self.__city = None
+#         def readAddress(self):
+#             self.__street = input("Enter Street Name: ")
+#             self.__city = input("Enter City Name: ")
+        
+#         def printAdress(self):
+#             return f"Street: {self.__street} City: {self.__city}"
+#            # print(f"Street: {self.__street} City: {self.__city}")
             
     
-    def __init__(self): #initilizing person object, there will be 2 address object in person object 
-        self.__name = None
-        self.__add1 = Person.__Adress()
-        self.__add2 = Person.__Adress()
+#     def __init__(self): #initilizing person object, there will be 2 address object in person object 
+#         self.__name = None
+#         self.__add1 = Person.__Adress()
+#         self.__add2 = Person.__Adress()
 
-    def readPerson(self):
-        self.__name = input("Input Person Name: ")
-        self.__add1.readAddress()
-        self.__add2.readAddress()
+#     def readPerson(self):
+#         self.__name = input("Input Person Name: ")
+#         self.__add1.readAddress()
+#         self.__add2.readAddress()
     
-    def printPerson(self):
-        print(f"Person Name: {self.__name}")
-        print(f"Adress #1: {self.__add1.printAdress()}")
-        print(f"Adress #2: {self.__add2.printAdress()}")
-        #self.__add1.printAdress()
-        #self.__add2.printAdress()
+#     def printPerson(self):
+#         print(f"Person Name: {self.__name}")
+#         print(f"Adress #1: {self.__add1.printAdress()}")
+#         print(f"Adress #2: {self.__add2.printAdress()}")
+#         #self.__add1.printAdress()
+#         #self.__add2.printAdress()
 
-person1 = Person()
-person1.readPerson()
-person1.printPerson()
+# person1 = Person()
+# person1.readPerson()
+# person1.printPerson()
 
+#------------------------#
 
 # ##INHARITANCE
 
