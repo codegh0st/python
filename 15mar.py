@@ -12,42 +12,66 @@ import importlib
 
 
 #----------------------
-# #Custome Exception Class/ User-Defined Error Class EXample 2
+# #Assetion EXample 2:
+# dict1 = {"apple":"2kg", "orange":"5kg", "mango":"7kg"}
 
-#Login Application
+# #verififying three values, if all True, it will print the dict1, if any of Three is False, Raise AssertionError
+# assert dict1['apple'] == "2kg"
+# assert dict1['orange'] == "5kg"
+# assert dict1['mango'] == "8kg" # Makeing mistake here, will raise AssertionError
 
-class LoginError(Exception):
-    def __init__(self):
-        super().__init__()
-    def __str__(self):
-        return f"Invalid Username or Password, Message by __str__()"
+# #Once we identified that error is in our dictionay, then i will go to dictionay and will change the value.
+# #hecne, our program will be debuged. Error free. 
 
-users = {"rahul":"rah@123", "ramu":"ram@123", "shiva":"shi@123"} #dictionary as database
+# print(dict1)
 
-def login(usr,pwd):
-    if usr in users and users[usr]== pwd:
-        print(f" Welcome {usr} to Dashboard !")
-    else:
-        raise LoginError()
+#----------------------
+# #Assertion EXample 1 : asset stement is used to check the any condition or any value at any point in program. 
+# n1 = int(input("Enter number 1: "))
+# n2 = int(input("Enter number 2: "))
 
-try: 
-    usr = input("enter username : ")
-    pwd = input("enter password : ")
-    login(usr, pwd)
+# assert n1 ==0, "n1 is 0, number multiplied by zero will result Zero"
 
-except LoginError as log:
-    print("Invalid Username or Password")
-    print(log)
+# print(n1*n2)
+
+
+#----------------------
+# # #Custome Exception Class/ User-Defined Error Class EXample 2
+
+# #Login Application
+
+# class LoginError(Exception):
+#     def __init__(self):
+#         super().__init__()
+#     def __str__(self):
+#         return f"Invalid Username or Password, Message by __str__()"
+
+# users = {"rahul":"rah@123", "ramu":"ram@123", "shiva":"shi@123"} #dictionary as database
+
+# def login(usr,pwd):
+#     if usr in users and users[usr]== pwd:
+#         print(f" Welcome {usr} to Dashboard !")
+#     else:
+#         raise LoginError()
+
+# try: 
+#     usr = input("enter username : ")
+#     pwd = input("enter password : ")
+#     login(usr, pwd)
+
+# except LoginError as log:
+#     print("Invalid Username or Password")
+#     print(log)
    
-OUTPUT:
-enter username : rahul
-enter password : rah@123
-Welcome rahul to Dashboard !
+# # OUTPUT:
+# # enter username : rahul
+# # enter password : rah@123
+# # Welcome rahul to Dashboard !
 
-enter username : elon musk     
-enter password : elo@123
-Invalid Username or Password
-Invalid Username or Password, Message by __str__()
+# # enter username : elon musk     
+# # enter password : elo@123
+# # Invalid Username or Password
+# # Invalid Username or Password, Message by __str__()
 
 #----------------------
 # #Custome Exception Class/ User-Defined Error Class EXample 1
