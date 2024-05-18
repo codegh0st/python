@@ -1,0 +1,1 @@
+1001Rahul Love Pyhton  this string written by write() function
