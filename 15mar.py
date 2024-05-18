@@ -6,10 +6,167 @@ import sys
 import module1
 import importlib
 
-
 #---------------------#
 #EXCEPTIONAL HANDLING / ERROR HANDLING
 
+
+
+#----------------------
+# #Custome Exception Class/ User-Defined Error Class EXample 2
+
+#Login Application
+
+class LoginError(Exception):
+    def __init__(self):
+        super().__init__()
+    def __str__(self):
+        return f"Invalid Username or Password, Message by __str__()"
+
+users = {"rahul":"rah@123", "ramu":"ram@123", "shiva":"shi@123"} #dictionary as database
+
+def login(usr,pwd):
+    if usr in users and users[usr]== pwd:
+        print(f" Welcome {usr} to Dashboard !")
+    else:
+        raise LoginError()
+
+try: 
+    usr = input("enter username : ")
+    pwd = input("enter password : ")
+    login(usr, pwd)
+
+except LoginError as log:
+    print("Invalid Username or Password")
+    print(log)
+   
+OUTPUT:
+enter username : rahul
+enter password : rah@123
+Welcome rahul to Dashboard !
+
+enter username : elon musk     
+enter password : elo@123
+Invalid Username or Password
+Invalid Username or Password, Message by __str__()
+
+#----------------------
+# #Custome Exception Class/ User-Defined Error Class EXample 1
+# #Steps to create Cutome Class
+# #1. Create a class with inheriting 'Exception' class
+# #2. Create contruction of cutome class, from contruction call the base's class contructer.
+
+# class ZeroMultiplicationError(Exception):
+#     def __init__(self):    #constructon of ZeroMultiplicationError
+#         super().__init__() #calling class Exception's contructor
+
+# def multiply(n1,n2):
+#     if n1 and n2:          #Condition will be tru if any number other than 'Zero' comes in n1. similarly with n2 also
+#         print(n1*n2)       #if n1==0 or n2==0 we can give above condition in this way also.
+#     else:
+#         raise ZeroMultiplicationError()
+
+    
+# try:
+#     n1 = int(input("Enter integer number 1: "))
+#     n2 = int(input("Enter integer number 2: "))
+#     multiply(n1,n2)
+
+# except ZeroMultiplicationError:
+#     print("cant multiply any number with zero, Its Math's Rule !")
+
+# finally:
+#     print("Execution fo finally block done.")
+
+# # OUTPUT:
+# # Enter integer number 1: 5
+# # Enter integer number 2: 0
+# # cant multiply any number with zero, Its Math's Rule !
+# # Execution fo finally block done.
+
+# # Enter integer number 1: 0
+# # Enter integer number 2: 5
+# # cant multiply any number with zero, Its Math's Rule !
+# # Execution fo finally block done.
+
+
+#----------------------
+
+#Note: else block executes only if try block runs without error. 
+
+#Nested Try Example 5
+# try: #try 1
+#     n1 = int(input("Enter any number 1: ")) #if doesnt give error, then control will enter in try 2, if error->its except block
+#     try: #try 2
+#         n2 = int(input("enter any number 2: ")) #if doesnt give error, then control will enter in try 3,if error->its except block
+#         try: #try 3
+#             n3 = n1/n2 # if evalution is succesfull, then prints n3 value, if give error, then control goes its except block
+#             print(f"Division = {n3}")
+#         except ZeroDivisionError:
+#             print("Number cant be devided by zero")
+#     except ValueError:
+#         print("please any interger value !")
+# except:
+#     print("please enter any integer value 2")
+
+
+# # OUTPUT:
+# # Enter any number 1: 5
+# # enter any number 2: 4
+# # Division = 1.25
+
+# # Enter any number 1: 5
+# # enter any number 2: a
+# # please any interger value ! #handling ValueError
+
+# # Enter any number 1: 6
+# # enter any number 2: 0
+# # Number cant be devided by zero # handling ZeroDivisionError
+
+#----------------------
+# #Nested Try Block example 4
+# try:
+#     print("inside outer try block 1")
+#     try:
+#         print(5/0) # generating the error to test the flow control
+#         print("insidet innner try block 2")
+#         try:
+#             print("inside inner try block 3")
+            
+#         except:
+#             print("inside innter except block 3")
+#     except:
+#         print("inside intter except block 2")
+
+# except:
+#     print("inside outer except block 1")
+
+#----------------------
+
+# #Exceptional Handling Example 3
+# def division():
+#     try:
+#         n1 = int(input("enter 1st number: "))
+#         n2 = int(input("Enter 2nd number: "))
+#         return n1/n2 #error detected here, control goes to finally,runs finally block, then return statement retruns None, because that expression has not generated any value.
+#     except ZeroDivisionError:
+#         print("number cant be divided by zero")
+#     except ValueError:
+#         print("please Enter any interger value:")
+#     finally:
+#         print("inside finally block") 
+
+# print(division())
+
+
+    # for i in range(5):
+    #     print(i)
+    #     if i >3:
+    #         break #abnormal termination of any function or while/for loop trigger finaly block, fiste statement in
+    #               #finally block will execute then loop or function will terminate.  
+# except ValueError:
+#     print("please Enter Integer Value !")
+# except ZeroDivisionError:
+#     print("No number Can be Divided by Zero")
 
 
 #-------------------------
