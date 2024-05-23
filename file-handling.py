@@ -2,29 +2,146 @@
 #FILE HANDLING
 #----------------------
 
+# READING / WRITING BINARY DATA EXAMPLE 3
+
+import pickle
+
+
+f1 =open("./files/megamind.jpg", "rb")
+b1 = f1.read()
+
+f2 = open("./files/megamind-copy.jpg", "wb")
+f2.write(b1)
+
+f2.close()
+f1.close()
+
+print(" image copy created .")
+    
+#----------------------
+# # READING / WRITING BINARY DATA EXAMPLE 2
+# #read write user-defined object from/to binary file
+# #Creating employee object
+# class Employee:
+#     def __init__(self, e, n, s):
+#         self.__empID = e
+#         self.__empName =n
+#         self.__empSalary = s
+
+#     def printEmp(self):
+#         print(f"EmployeeID:{self.__empID} EmployeeName:{self.__empName} EmployeeSalary: {self.__empSalary}")
+
+# emp1 = Employee(101, "rahul", 2000)
+# emp2 = Employee(102, "Rajesh", 5000)
+
+# # Creating Binary file to write emp1 and emp2 into it
+# import pickle
+# with open("./files/emp.ser", "wb") as f:
+#     pickle.dump(emp1, f)
+#     pickle.dump(emp2, f)
+
+
+# # Reading data from binary file 'emp.ser'
+# with open("./files/emp.ser", "rb") as f:
+#     e1 = pickle.load(f)
+#     e2 = pickle.load(f)
+    
+#     e1.printEmp()#reading object from binary file, and calling its method.
+#     e2.printEmp()
+
+
+
 #----------------------
 
+# # READING / WRITING BINARY DATA EXAMPLE 1
+# # 'pickle' module is used to convert python object into bytes and from bytes it 
+# # it form bytes is converted into python object.
+
+# import pickle
+
+# with open("./files/binary-file1.ser", "wb") as f:
+#     list1 = [10,20,30,40]
+#     float1 = 2.5
+#     str1 = "python"
+
+#     pickle.dump(list1, f)
+#     pickle.dump(float1, f)
+#     pickle.dump(str1, f)
+
+# #READING
+# with open("./files/binary-file1.ser", "rb") as f:
+#     list1 = pickle.load(f)
+#     float1 = pickle.load(f)
+#     str1 = pickle.load(f)
+
+#     print(list1,float1, str1)
+
+
+
 #----------------------
-# #READING WRITING  DATA IN CSV FILE EXAMPLE 4
-#Reading/Writing data from dictionary to csv and vise-versa
-import csv
+# import json
 
-with open("./files/peoples.csv", "w") as f:
-    write_dictObj = csv.DictWriter(f, fieldnames=("ID", "PERSON NAME", "CITIZENSHIP"))#these are keys/column of csv
+# dict1 = {1:"apple", 2:"mango", 3:"grapes"}
+# str1 = json.dumps(dict1)
+# print(str1)
+# str2 = json.loads(str1)
+# print(str2)
 
-    write_dictObj.writeheader()#header will be reated by taking 'fieldnames'
-    while True:
-        pid = input("inter personan ID: ")
-        pname = input("Enter person Name: ")
-        citizen = input("Enter persona Citizenship: ")
+# print(type(str1), type(str2))
 
-        write_dictObj.writerow({"ID": pid, "PERSON NAME":pname, "CITIZENSHIP":citizen})
 
-        p = input("Do you want to add more record? yes/no: ")
+#----------------------
 
-        if p == 'no':
-            break
-print("peoples.csv file created !")
+# # READING/WIRTING DATA FROM/TO JSON FORMAT
+# import json
+
+# student = {
+#     "name": ["rahul","ramesh", "raju"],
+#     "course": ["pyhon", "java", "nodejs"],
+#     "fee": [2000, 4000, 6000]
+# }
+
+# list1 = [10,20, 30, 40]
+
+# with open("./files/student.json", "w") as f:
+#     json.dump([student, list1], f) # writing dictionary object (student) to file pointer f wihc is nothing but 'student.json'
+#     #more than one object can be saved in json file, eg, dict obj and list obj given as list to dump in f
+#     #stduent.json -> [{"name": ["rahul", "ramesh", "raju"], "course": ["pyhon", "java", "nodejs"], "fee": [2000, 4000, 6000]}, [10, 20, 30, 40]]
+# #Loading json file into memory
+# with open("./files/student.json", "r") as f:
+#     stud = json.load(f)
+#     print(stud[0]['name'][0]) # will print 'rahul'
+
+#----------------------
+# #READING WRITING  DATA IN CSV FILE EXAMPLE 5
+# #Reading data from csv file
+# import csv
+# with open("./files/peoples.csv", "r") as f:
+#     dic_reader_obj = csv.DictReader(f)
+#     for row in dic_reader_obj:
+#         print(row['ID'], row['PERSON NAME'], row['CITIZENSHIP'])
+
+#----------------------
+# # #READING WRITING  DATA IN CSV FILE EXAMPLE 4
+# #Reading/Writing data from dictionary to csv and vise-versa
+# import csv
+
+# with open("./files/peoples.csv", "w") as f:
+#     write_dictObj = csv.DictWriter(f, fieldnames=("ID", "PERSON NAME", "CITIZENSHIP"))#these are keys/column of csv
+
+#     write_dictObj.writeheader()#header will be created by taking 'fieldnames'
+#     while True:
+#         pid = input("inter personan ID: ")
+#         pname = input("Enter person Name: ")
+#         citizen = input("Enter persona Citizenship: ")
+
+#         write_dictObj.writerow({"ID": pid, "PERSON NAME":pname, "CITIZENSHIP":citizen})
+
+#         p = input("Do you want to add more record? yes/no: ")
+
+#         if p == 'no':
+#             break
+# print("peoples.csv file created !")
 
 
 
