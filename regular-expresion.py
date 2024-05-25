@@ -50,20 +50,234 @@ OBSERVE THE EXAMPLES TO UNDERSTAND
 '''
 
 
-
 #----------------------
 
 
 
 #----------------------
-import re
 
-names = ["rahul", "ramu", "ramesh", "suresh", "indran"]
 
-for name in names:
-    m = re.findall(r'^[rs].*h$', name) # name starting with r or s, followed by any char any number of times in between, but should end with h.
-    if m!= []: #if m is not empty means if there is value in 'm' then print 'm'
-        print(m)
+
+
+#----------------------
+# import re
+
+# #(?=...)
+# str1 = "IsaacAsimov Isaac Asimov isaacAsimov isaacObama IsaacObama isaacobama IsaacAsimov isaacasimov"
+# m =re.findall(r'Isaac(?=Asimov)', str1)
+# print(m)
+# #Output:
+# #['Isaac', 'Isaac']
+
+# #(?!...)
+# str2 = "IsaacAsimov Isaac Asimov isaacAsimov isaacObama IsaacObama isaacobama IsaacAsimov isaacasimov IsaacSingh"
+# m =re.findall(r'Isaac(?!Asimov)', str2)
+# print(m)
+# #Output:
+# #['Isaac', 'Isaac', 'Isaac']
+
+
+#----------------------
+# #VALIDATE ADDITION EXPRESION A+B
+
+# import re
+# expr = input("Enter Additional Expresion: ")
+# m = re.search(r'[a-zA-Z]+[+][a-zA-Z]+', expr)
+# if m != None:
+#     print(f"{expr} ! Is Valid Addition EXpresion")
+# else:
+#     print(f"{expr}! is Invalid Addition Expresion")
+
+# # output:
+# # Enter Additional Expresion: A+B
+# # A+B ! Is Valid Addition EXpresion
+
+# # Enter Additional Expresion: AAAAAA+BBBBBBB
+# # AAAAAA+BBBBBBB ! Is Valid Addition EXpresion
+
+# # Enter Additional Expresion: abcd+420
+# # abcd+420! is Invalid Addition Expresion
+
+
+
+#----------------------
+# # GIVING NAME TO THE GROUP 
+
+# import re
+# str1 = "rahul has joined the comapny on 12-12-2022"
+
+# m = re.search(r'(?P<dd>[0-9]{2})-(?P<mm>[0-9]{2})-(?P<yyyy>[0-9]{4})', str1)
+
+# print(m.group('dd'))
+# print(m.group('mm'))
+# print(m.group('yyyy'))
+
+# #Accesing value using group number
+# print(m.group(0))
+# print(m.group(1))
+# print(m.group(2))
+# print(m.group(3))
+
+
+# #Giving reference to the previous named group, this will match the the value which comes in resule at previous staage
+# means, above dd was 12, now below we matching theat month also should be 12, giving 'dd' both in dd and mm positon.
+# m2=re.search(r'(?P<dd>[0-9]{2})-(?P=dd)-(?P<yy>[0-9]{4})',str1)
+# print(m2)
+
+# # Output:
+# # 12
+# # 12
+# # 2022
+
+# # 12-12-2022
+# # 12
+# # 12
+# # 2022
+
+# # <re.Match object; span=(32, 42), match='12-12-2022'>
+
+
+
+#----------------------
+# #USERNAME VALIDATION:
+# '''
+# Username should start with alphabet uppercase/lowercase both ok, should conatain digits, on underscore or one dot,
+# Other than this it should not accept any symbols as username. 
+# '''
+# import re
+
+# usrname = input("Enter your username: ")
+# m = re.fullmatch(r'^[a-zA-Z][a-zA-Z0-9]*[_\.]?[a-zA-Z0-9]*$', usrname)
+# if m != None:
+#     print(f"{usrname} is Valid Username !")
+# else:
+#     print(f"'{usrname}' is Invalid Username !")
+
+# # ^[a-zA-Z]    -> insures username starting with alphabet, Match only one Charector from a to z
+# # [a-zA-Z0-9]* -> 0 or more than 0 alphanumeric char is allowed
+# # [_\.]?       -> 0 or 1, '_' or '.' is allowed, 
+# # [a-zA-Z0-9]*$ -> make sures username is ending with alphnumeric char, 0 or more than 0 char is allowed at end
+
+# #OUTPUT:
+# # Enter your username: rahul.rajisngh011
+# # 'rahul.rajisngh011' is Valid username !
+
+#----------------------
+# #SPECIAL CHAR INSIDE PARENTHESIS WILL ACT AS NORMAL SYMBOLS
+# '''
+# Special characters lose their special meaning inside sets. 
+# For example, [(+*)] will match any of the literal characters '(', '+', '*', or ')'.
+# '''
+
+# import re
+# str1 = "abcdd abc abcd+dcef hello*hello = hellohellohello Ok (Thank you)"
+
+# m = re.findall(r'[(*+)]',str1)
+# print(m)
+# # OUTPUT:
+# # ['+', '*', '(', ')']
+
+# #SPLITING STRING
+# m1 = re.split(r'[*+=(]', str1) #we can split the word from 'space' also. give like space in set [ *=()]
+# print(m1)
+
+# # OUTPUT:
+# # ['+', '*', '(', ')']
+# # ['abcdd abc abcd', 'dcef hello', 'hello ', ' hellohellohello Ok ', 'Thank you)']
+
+#----------------------
+
+# #GROUPING THE REGEX WITH PARENTHESIS AND ACCESING IT
+# import re
+
+# str1 ='''rahul joining date in new company is 20-02-2020 at 10:00:00 and he resingned on 23.06.2024 at 05:20:30 pm 
+# due to health issue, his primary email id is : singh.rahulraj011@gmail.com, and secondary email id is abc@abc.com'''
+
+# d = re.findall(r'([0-9]{2})-([0-9]{2})-([0-9]{4})', str1)
+# print(d)
+# # output:
+# # [('20', '02', '2020')]
+
+# str2 = input('Input any date in any format, but i am  verifying dd-mm-yyyy: ')
+# d1 = re.fullmatch(r'([0-9]{2})-([0-9]{2})-([0-9]{4})', str2) #retuns 'match object'
+# if d1 != None:
+#     print(d1.group(0)) #prints dd-mm-yyyy
+#     print(d1.group(1)) #prints dd
+#     print(d1.group(2)) #prints mm
+#     print(d1.group(3)) #prints yyyy
+
+# else:
+#     print(f"{str2} is invalid format, i was expecting : 'dd-mm-yyyy ")
+
+# # OUTPUT:
+# # Input any date in any format, but i am  verifying dd-mm-yyyy: 12.12.2012
+# # 12.12.2012 is invalid format, i was expecting : 'dd-mm-yyyy 
+
+# # Input any date in any format, but i am  verifying dd-mm-yyyy: 12-12-2012
+# # 12-12-2012
+# # 12
+# # 12
+# # 2012
+
+#----------------------
+# # DATE, TIME, EMAIL EXTRACTION FROM STRING 
+
+# import re
+
+# str1 ='''rahul joining date in new company is 20-02-2020 at 10:00:00 and he resingned on 23.06.2024 at 05:20:30 pm 
+# due to health issue, his primary email id is : singh.rahulraj011@gmail.com, and secondary email id is abc@abc.com'''
+
+# #Extracting Date
+# d = re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{4} | [0-9]{2}-[0-9]{2}-[0-9]{4}', str1)
+# print(d)
+
+# #Extracting time
+# t = re.findall(r'[0-9]{2}:[0-9]{2}:[0-9]{2}', str1)
+# print(t)
+
+# #Extracting Email
+# e = re.findall(r'[a-zA-Z]+[0-9]*@[a-z]{2,12}\.[a-z]{2,3}', str1)
+# print(e)
+
+
+# # #OUTPUT:
+# # [' 20-02-2020', '23.06.2024 ']
+# # ['10:00:00', '05:20:30']
+# # ['rahulraj011@gmail.com', 'abc@abc.com']
+
+#----------------------
+# # NAME VALIDATION: name should start with aphabet min 3 char max 10 char should be allowed
+
+# import re
+
+# name = input("Enter name to check if its valid or not?: ")
+# m = re.fullmatch(r'^[a-zA-Z]{3,10}', name)#should starts with alphabet and should conatain minimum 3 char max 10 char
+# if m!=None:
+#     print("This Name is valide Returning 'match object' ", m)
+# else:
+#     print(f"'{name}' is invalid name !")
+
+
+# #OUTPUT:
+# # Enter name to check if its valid or not?: Rahul
+# # This Name is valide Returning 'match object'  <re.Match object; span=(0, 5), match='Rahul'>
+
+# # Enter name to check if its valid or not?: f@x
+# # 'f@x' is invalid name !
+
+#----------------------
+# import re
+
+# names = ["rahul", "ramu", "ramesh", "suresh", "indran"]
+
+# for name in names:
+#     m = re.findall(r'^[rs].*h$', name) # name starting with r or s, followed by any char any number of times in between, but should end with h.
+#     if m!= []: #if m is not empty means if there is value in 'm' then print 'm'
+#         print(m)
+
+# # output:
+# # ['ramesh']
+# # ['suresh']
 
 #----------------------
 # #{m,n}? - returns minimum number of occurence
