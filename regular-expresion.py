@@ -54,22 +54,56 @@ OBSERVE THE EXAMPLES TO UNDERSTAND
 
 
 
+
 #----------------------
+'''
+STRONG PASSWORD REGEX
+The regular expression below cheks that a password:
+• Has minimum 8 characters in length. Adjust it by modifying {8,)
+• At least one uppercase English letter. You can remove this condition by removing (?=.*?[A-Z]) #any char followed by Capital letter
+• AT least one lowercase English letter. You can remove this condition by removing (?=.*?[a-z]) #any char jiske aaga me small letter rahe
+* At least one digit. You can remove this condition by removing (?=.*?[0-9]) any charector jiske aage me digits rahe
+• At least one special character, You can remove this condition by removing (?=.*?[#?!@$%^&*-]) #any char .* jiske aage me ye sybol [#?!@$%^&*-] rahe
+'''
+pattern = r'^(?=.*?[A-ZJ)(?=.*?[a-z])(?=.*7[0-9])(?=.*?[#?!@$%^&*-]).{8, }$' 
 
 
+
+#----------------------
+# #(?<=...)  -> searches for specific word/pattern behind given word. Asimov ke pihche Isaac hai? if yes reruns Match object
+
+# import re
+# str1 = "IsaacAsimov Isaac Asimov isaacAsimov isaacObama IsaacObama isaacobama IsaacAsimov isaacasimov"
+# m = re.findall(r'(?<=Isaac)Asimov',str1) # findall() returns a list.
+# m2 = re.search(r'(?<=Isaac)Asimov', str1) # seach() returns match object. 'm2.group(0)' -> prints all returned values
+# print(m)
+# print(m2.group(0))
+
+# #OUTPUT:
+# # ['Asimov', 'Asimov']
+# # Asimov
+
+# #EXAMPLE 2
+# #This example looks for a word following a hyphen: -> looking for any word of more than 1 char, whose behind there should be one '-' .
+# import re
+# m = re.search(r'(?<=-)\w+', 'spam-egg')
+# m.group(0)
+
+# #OUTPUT:
+# #'egg'
 
 
 #----------------------
 # import re
 
-# #(?=...)
+# #(?=...) -> searches for specific word/pattern after the given word. e.g isaac ke aage Asimove hai? if yes retruns MO.
 # str1 = "IsaacAsimov Isaac Asimov isaacAsimov isaacObama IsaacObama isaacobama IsaacAsimov isaacasimov"
 # m =re.findall(r'Isaac(?=Asimov)', str1)
 # print(m)
 # #Output:
 # #['Isaac', 'Isaac']
 
-# #(?!...)
+# #(?!...) -> searches for specific word/patterns that should not be after the given word. e.g: Isaac ke aage Asimov nhi hai? if yes returns MO
 # str2 = "IsaacAsimov Isaac Asimov isaacAsimov isaacObama IsaacObama isaacobama IsaacAsimov isaacasimov IsaacSingh"
 # m =re.findall(r'Isaac(?!Asimov)', str2)
 # print(m)
