@@ -31,6 +31,38 @@ b = s.recv(1024) # receving result from Math Server in bytes
 print(b.decode) # decoding result and print it. 
 
 
+#-------------------
+
+# Message Server
+import socket
+
+s=socket.socket()
+s.bind(("localhost",50))
+print("Server is running....")
+s.listen(5)
+t=s.accept()
+cs=t[0]
+b=cs.recv(1024)
+msg=b.decode()
+print(msg)
+cs.send(b'Hello Client')
+
+
+
+# Message Client
+import socket
+
+s=socket.socket()
+s.connect(("localhost",50))
+msg="Hello Server"
+b=msg.encode()
+s.send(b)
+b=s.recv(1024)
+msg=b.decode()
+
+
+
+
 
 
 
