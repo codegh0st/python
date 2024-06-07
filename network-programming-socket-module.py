@@ -4,7 +4,7 @@
 
 import socket
 
-s = socket.socket() # creating connection socket object,using this only servr will accept there request and and will senn the respnse
+s = socket.socket() # creating connection, creating socket object,using this only servr will accept there request and and will senn the respnse
 s.bind(("localhost", 5050)) # Define on which ip:port this service will run? give that. binding ip address and port, so if any request comming on this ip and port keep on listning for it, bind take argument in Tuple.
 print("Math Server Is Running...")
 s.listen(5)
@@ -59,6 +59,7 @@ b=msg.encode()
 s.send(b)
 b=s.recv(1024)
 msg=b.decode()
+print(msg)
 
 
 
